@@ -548,7 +548,7 @@ static int print_port_status(struct hub_info * hub, int portmask)
                 break;
             }
 
-            printf("  Port %d: %04x", port, port_status);
+            printf("  Hub %s, Port %d: %04x", hub->location, port, port_status);
 
             char description[256] = "";
             struct libusb_device * udev;
@@ -609,7 +609,7 @@ static int print_port_status(struct hub_info * hub, int portmask)
             if (port_status & USB_PORT_STAT_ENABLE)      printf(" enable");
             if (port_status & USB_PORT_STAT_CONNECTION)  printf(" connect");
 
-            if (port_status & USB_PORT_STAT_CONNECTION)  printf(" [%s]", description);
+            if (port_status & USB_PORT_STAT_CONNECTION)  printf(" %s", description);
 
             printf("\n");
         }
